@@ -1,0 +1,76 @@
+.allheroes{
+    width: 90%;
+    margin: auto;
+}
+
+.allheroes-nav{
+    display: flex;
+    margin-bottom: 1em;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.allheroes-title{
+    font-weight: 700;
+    font-size: 1.8em;
+    width: 50%;
+}
+
+.allheroes-form{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+}
+
+.allheroes-form input{
+    width: 60%;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: white;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.search-button{
+    position: absolute;
+    right: calc(60% - 35px);
+}
+
+.cancel-button{
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+.active-cancel-button{
+    display: inline;
+}
+
+@media screen and (max-width: 765px) {
+        .allheroes-title{
+            font-size: 1.4em;
+            width: 40%;
+        }
+    
+        .allheroes-form{
+            width: 90%;
+        }
+    
+        .allheroes-form input{
+            width: 70%;
+        }
+
+        .search-button{
+            position: absolute;
+            right: calc(70% - 35px);
+        }
+}

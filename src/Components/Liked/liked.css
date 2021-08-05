@@ -1,0 +1,104 @@
+.liked{
+    background-color: transparent;
+    width: 90%;
+    margin: 1em auto;
+    border-radius: 20px;
+    padding: 1em 0;
+    border: 1px solid rgba(106, 77, 188, 0.44);
+    transition: 0.3s ease background-color;
+}
+
+.liked-close{
+    background-color: rgba(106, 77, 188, 0.28);
+    border: none;
+    padding: 0;
+}
+
+.liked-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    width: 95%;
+    margin: auto;
+}
+
+.liked-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.liked-title p{
+    margin-left: 10px;
+    font-weight: 700;
+    font-size: 1.6em;
+}
+
+.liked-title__img{
+    background-color: rgba(106, 77, 188, 1);
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.liked-title__img img{
+    width: 40%;
+}
+
+.liked-dropdown{
+    height: 40px;
+    width: 40px;
+    border:none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s ease all;
+}
+
+.dont-likes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+    padding: 3.7em 0;
+}
+
+.dont-likes img{
+    width: 30px;
+    margin-bottom: 10px;
+}
+
+.dont-likes p{
+    text-align: center;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 765px){
+    .dont-likes p{
+        font-size: 0.6em;
+    }
+}
+
+.card-grid-liked{
+        margin: auto;
+        width: 95%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        grid-auto-flow: 22rem;
+        justify-items: flex-start;
+        gap: 20px;
+}
+
+.dropdown-active{
+    transform: rotate(180deg);
+}
+
+.dpnone{
+    display: none;
+}
