@@ -1,7 +1,8 @@
 import React,{useState, useEffect} from 'react';
-import { fetchHeroes } from './fetchHeroes';
+import { fetchHeroes } from './Helpers/fetchHeroes';
 import { AllHeroes } from './Components/AllHeroes/AllHeroes';
 import { SearchNav } from './Components/SearchNav/SearchNav';
+import MyLoader from './Components/MyLoader/MyLoader'
 import { Liked } from './Components/Liked/Liked';
 
 const App =() => {
@@ -11,6 +12,7 @@ const App =() => {
   const[seeCross,setSeeCross] = useState(false);
   const[isOpen, setIsOpen] = useState(true);
   const[favorites, setFavorites] = useState([]);
+  const[isLoaded,setIsLoaded] = useState(false);
 
   const localStorageLikedOpen = "LikedOpen";
 
@@ -70,6 +72,7 @@ const App =() => {
       });
 
       setIsOpen(JSON.parse(window.localStorage.getItem(localStorageLikedOpen)));
+      setIsLoaded(true);
   }, []);
 
   useEffect(() => {
@@ -98,12 +101,14 @@ const App =() => {
         handleDelete={handleDelete}
         seeCross={seeCross}
       />
+      { isLoaded ?
       <AllHeroes 
         inputValue={inputValue}
         setAllData={setAllData}
         allData={allData}
         LikeHeroe={LikeHeroe}
-      />
+      /> 
+       : <MyLoader className="loader"/>}
     </>
   );
 }

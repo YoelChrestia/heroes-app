@@ -24,3 +24,8 @@ body{
     display: block;
     margin: auto;
 }
+
+.loader{
+    display: flex;
+    margin: auto;
+}

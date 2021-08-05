@@ -2,9 +2,7 @@ import React from 'react';
 import {Card} from '../Card/Card'
 import './allheroes.css'
 
-// import MyLoader from '../MyLoader/MyLoader'
-
-export const AllHeroes = ({allData, LikeHeroe,inputValue,setAllData}) =>{
+export const AllHeroes = ({allData, LikeHeroe,inputValue}) => {
 
     let newArray = [];
 
