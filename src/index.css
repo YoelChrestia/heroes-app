@@ -45,5 +45,5 @@ body::-webkit-scrollbar-thumb {
 
 .loader{
     display: flex;
-    margin: auto;
+    margin: 120px auto;
 }

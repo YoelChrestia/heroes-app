@@ -75,6 +75,14 @@ const App =() => {
           }   
         });
       }
+
+      //Open the Liked window when touch a like
+      setIsOpen(true);
+      //Go to the top
+      window.scroll({
+        top: 0,
+        behavior: 'smooth'
+      });
   }
 
   // Load of the all fetch
@@ -90,39 +98,40 @@ const App =() => {
       setIdFavorites(JSON.parse(window.localStorage.getItem(localStorageFavoritesItem)));
   }, []);
 
+  //Save Localstorage liked window
   useEffect(() => {
     window.localStorage.setItem(localStorageLikedOpen,JSON.stringify(isOpen));
   }, [isOpen]);
 
+  //Set favorites and processedData
   useEffect(() => {
     let newFavorites = [];
     let newProcessedData = [];
 
+    //Check ids and push them to favorites
     idFavorites.forEach(ids =>{
       const coincidences = allData.find(e => e.id === ids);
       if(coincidences !== undefined){
-        if(newFavorites.liked){}
-        else{
+        if(!coincidences.liked){
           coincidences.liked = !coincidences.liked
         }
         newFavorites.push(coincidences);
       }
     });
-
+    
+    //Those who are not favorites pushes them to processedData
     allData.forEach(e=>{
-      if(idFavorites.includes(e.id)){}
-      else{
+      if(!idFavorites.includes(e.id)){
         newProcessedData.push(e);
       }
     });
-
+    
     setFavorites(newFavorites);
     setProcessedData(newProcessedData);
 
     window.localStorage.setItem(localStorageFavoritesItem,JSON.stringify(idFavorites));
    
   }, [idFavorites, allData]);
-
 
   //Order of items
   processedData.sort(function (a, b){
@@ -131,10 +140,9 @@ const App =() => {
   return (
     <>
       <header className="logo">
-        <img src="./assets/logo/logo.svg" alt="logo app" />
+        <img src="./assets/logo/logo.svg" alt="Logo app" />
       </header>
       <Liked
-        allData={allData}
         LikeHeroe={LikeHeroe}
         setIsOpen={setIsOpen}
         isOpen={isOpen}
@@ -148,12 +156,10 @@ const App =() => {
         seeCross={seeCross}
       />
       { isLoaded ?
-      <AllHeroes 
-        inputValue={inputValue}
-        allData={processedData}
-        LikeHeroe={LikeHeroe}
-      /> 
-      : <MyLoader className="loader"/>}
+      <AllHeroes inputValue={inputValue} allData={processedData} LikeHeroe={LikeHeroe}/> 
+      :
+      <MyLoader className="loader"/>
+      }
     </>
   );
 }

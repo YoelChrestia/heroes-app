@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Card } from '../Card/Card'
 import './liked.css'
 
-export const Liked = ({allData, LikeHeroe, isOpen, setIsOpen, favorites}) => {
-
-    // Render when liking a Card
-    const[cardsLiked, setCardsLiked] = useState([]);
+export const Liked = ({LikeHeroe, isOpen, setIsOpen, favorites}) => {
 
     // Open window of Likes
     const handleOpen = () =>{
         setIsOpen(!isOpen);
-    } 
-
-    useEffect(() =>{
-        setCardsLiked(favorites);
-    }, [allData, favorites]);
+    }
 
     return (
         <section className={`liked ${isOpen ? "" : "liked-close"}`}>
@@ -29,9 +22,9 @@ export const Liked = ({allData, LikeHeroe, isOpen, setIsOpen, favorites}) => {
                     <img src="./assets/arrow-up/arrow-up.svg" alt="liked dropdown"/>
                 </button>
             </nav>
-                {   cardsLiked.length > 0 ?
+                {   favorites.length > 0 ?
                     <div className={`card-grid-liked ${isOpen ? "" : "hiddenItems"}`}>
-                    {cardsLiked.map(e=>{
+                    {favorites.map(e=>{
                         return <Card
                         id={e.id}
                         key={e.id}

@@ -33,15 +33,15 @@ export const AllHeroes = ({allData, LikeHeroe, inputValue}) => {
 
         return(
             <div style={style}>
-            { searchedDataOrAll.length <= (rowIndex * 4 + columnIndex) ? "" : //If no complete the row
+            { searchedDataOrAll.length <= (rowIndex * columns + columnIndex) ? "" : //If no complete the row
                  <Card       
-                              id={searchedDataOrAll[rowIndex * 4 + columnIndex].id}
-                              key={searchedDataOrAll[rowIndex * 4 + columnIndex].id}
-                              img={searchedDataOrAll[rowIndex * 4 + columnIndex].images.sm}
-                              name={searchedDataOrAll[rowIndex * 4 + columnIndex].name}
-                              realname={searchedDataOrAll[rowIndex * 4 + columnIndex].biography.fullName}
-                              power={searchedDataOrAll[rowIndex * 4 + columnIndex].powerstats.strength}
-                              isLiked={searchedDataOrAll[rowIndex * 4 + columnIndex].liked}
+                              id={searchedDataOrAll[rowIndex * columns + columnIndex].id}
+                              key={searchedDataOrAll[rowIndex * columns + columnIndex].id}
+                              img={searchedDataOrAll[rowIndex * columns + columnIndex].images.sm}
+                              name={searchedDataOrAll[rowIndex * columns + columnIndex].name}
+                              realname={searchedDataOrAll[rowIndex * columns + columnIndex].biography.fullName}
+                              power={searchedDataOrAll[rowIndex * columns + columnIndex].powerstats.strength}
+                              isLiked={searchedDataOrAll[rowIndex * columns + columnIndex].liked}
                               LikeHeroe={LikeHeroe}
                               /> 
                             }            
