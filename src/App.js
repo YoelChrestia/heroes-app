@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react';
 import { fetchHeroes } from './Helpers/fetchHeroes';
 import { AllHeroes } from './Components/AllHeroes/AllHeroes';
 import { SearchNav } from './Components/SearchNav/SearchNav';
-import MyLoader from './Components/MyLoader/MyLoader'
+import MyLoader from './Components/MyLoader/MyLoader';
 import { Liked } from './Components/Liked/Liked';
 
 const App =() => {
@@ -69,10 +69,10 @@ const App =() => {
   useEffect(() => {
       fetchHeroes().then(e =>{
         setAllData(e);
+        setIsLoaded(true);
       });
 
       setIsOpen(JSON.parse(window.localStorage.getItem(localStorageLikedOpen)));
-      setIsLoaded(true);
   }, []);
 
   useEffect(() => {

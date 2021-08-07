@@ -7,12 +7,30 @@
     margin: 0;
 }
 
+html{
+    overflow-x: hidden;
+}
+
 /* General Styles */
 
 body{
     background-color: rgb(16,9,44);
     color: white;
     font-family: 'Poppins', sans-serif; /*¨400 , 600 , 700 */
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 1em;
+}
+   
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+   
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(106, 77, 188, 0.44);
+    outline: 1px solid rgb(16,9,44);
 }
 
 .logo{

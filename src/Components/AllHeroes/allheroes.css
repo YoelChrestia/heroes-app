@@ -1,14 +1,17 @@
-.card-grid{
+.grid{
     margin: auto;
-    width: 90%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    grid-auto-flow: 22rem;
-    justify-items: center;
-    gap: 20px;
+    overflow-x: hidden !important;
 }
 
-.card-grid-g{
-    margin: auto;
-    overflow: hidden !important; 
+.grid::-webkit-scrollbar {
+    width: 1em;
+}
+   
+.grid::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+   
+.grid::-webkit-scrollbar-thumb {
+    background-color: rgba(106, 77, 188, 0.44);
+    outline: 1px solid rgb(16,9,44);
 }
