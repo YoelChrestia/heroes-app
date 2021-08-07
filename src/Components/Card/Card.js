@@ -3,7 +3,8 @@ import './card.css'
 
 export const Card = ({id, img, name, realname, power, isLiked, LikeHeroe}) => {
 
-    let valueofpower = power / 10;
+    // Power in card
+    let valueOfPower = power / 10;
 
     return (
         <div className="card" onClick={() =>{
@@ -20,7 +21,7 @@ export const Card = ({id, img, name, realname, power, isLiked, LikeHeroe}) => {
                 <p className="card-realname">Real Name: {realname === "" ? "unknown": realname}</p>
                 <div className="card-power">
                     <img src="./assets/fist/fist.svg" alt="strong"/>
-                    <p><b>{valueofpower}</b> / 10</p>
+                    <p><b>{valueOfPower}</b> / 10</p>
                 </div>
             </div>
         </div>

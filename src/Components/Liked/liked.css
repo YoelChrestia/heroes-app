@@ -99,6 +99,6 @@
     transform: rotate(180deg);
 }
 
-.dpnone{
+.hiddenItems{
     display: none;
 }

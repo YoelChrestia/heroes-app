@@ -4,9 +4,10 @@ import './liked.css'
 
 export const Liked = ({allData, LikeHeroe, isOpen, setIsOpen, favorites}) => {
 
-    
+    // Render when liking a Card
     const[cardsLiked, setCardsLiked] = useState([]);
 
+    // Open window of Likes
     const handleOpen = () =>{
         setIsOpen(!isOpen);
     } 
@@ -28,8 +29,8 @@ export const Liked = ({allData, LikeHeroe, isOpen, setIsOpen, favorites}) => {
                     <img src="./assets/arrow-up/arrow-up.svg" alt="liked dropdown"/>
                 </button>
             </nav>
-                {   cardsLiked[0] ?
-                    <div className={`card-grid-liked ${isOpen ? "" : "dpnone"}`}>
+                {   cardsLiked.length > 0 ?
+                    <div className={`card-grid-liked ${isOpen ? "" : "hiddenItems"}`}>
                     {cardsLiked.map(e=>{
                         return <Card
                         id={e.id}
@@ -42,7 +43,7 @@ export const Liked = ({allData, LikeHeroe, isOpen, setIsOpen, favorites}) => {
                         LikeHeroe={LikeHeroe}
                         />
                     }) }</div> :
-                    <div className={`dont-likes ${isOpen ? "" : "dpnone"}`}>
+                    <div className={`dont-likes ${isOpen ? "" : "hiddenItems"}`}>
                         <img src="./assets/big-heart/big-heart.svg" alt="Big Like"/>
                         <p>You haven't liked any superhero yet</p>
                     </div>

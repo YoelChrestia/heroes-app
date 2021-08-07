@@ -5,41 +5,51 @@ import './allheroes.css'
 
 export const AllHeroes = ({allData, LikeHeroe, inputValue}) => {
 
+    // positions related to the break points of the viewport measures
     const[sizesPosition, setSizesPosition] = useState();
 
-    let dataSearched = [];
+    //Array with data searched and regex
+    let dataSearched = []; 
 
-    if(inputValue[0]){
+    if(inputValue.length > 0){
         const regex = new RegExp(`${ inputValue }`.toLowerCase());
         dataSearched = allData.filter( item => item.name.toLowerCase().match(regex) || item.biography.fullName.toLowerCase().match(regex));
     }
+    // -------------->
 
+    //Celds of Grid with Cards
     const Cell = ({ columnIndex, rowIndex, style }) => {
 
-        let whoArray = allData;
+        // Array with All or Searched data according to the input
+        let searchedDataOrAll;
 
-        if(inputValue[0]){
-            whoArray = dataSearched;
+        if(inputValue.length > 0){
+            searchedDataOrAll = dataSearched;
+            console.log("hola")
+        }else{
+            searchedDataOrAll = allData;
         }
+        // -------------->
 
         return(
             <div style={style}>
-                { whoArray.length <= (rowIndex * 4 + columnIndex) ? <div></div> :
+            { searchedDataOrAll.length <= (rowIndex * 4 + columnIndex) ? "" : //If no complete the row
                  <Card       
-                              id={whoArray[rowIndex * 4 + columnIndex].id}
-                              key={whoArray[rowIndex * 4 + columnIndex].id}
-                              img={whoArray[rowIndex * 4 + columnIndex].images.sm}
-                              name={whoArray[rowIndex * 4 + columnIndex].name}
-                              realname={whoArray[rowIndex * 4 + columnIndex].biography.fullName}
-                              power={whoArray[rowIndex * 4 + columnIndex].powerstats.strength}
-                              isLiked={whoArray[rowIndex * 4 + columnIndex].liked}
+                              id={searchedDataOrAll[rowIndex * 4 + columnIndex].id}
+                              key={searchedDataOrAll[rowIndex * 4 + columnIndex].id}
+                              img={searchedDataOrAll[rowIndex * 4 + columnIndex].images.sm}
+                              name={searchedDataOrAll[rowIndex * 4 + columnIndex].name}
+                              realname={searchedDataOrAll[rowIndex * 4 + columnIndex].biography.fullName}
+                              power={searchedDataOrAll[rowIndex * 4 + columnIndex].powerstats.strength}
+                              isLiked={searchedDataOrAll[rowIndex * 4 + columnIndex].liked}
                               LikeHeroe={LikeHeroe}
                               /> 
-                              }            
-             </div>
+                            }            
+            </div>
             )
     }
 
+    // Position according to the viewport
     const listenViewport = () => {
         if(window.innerWidth >= 1280){
             setSizesPosition(1);
@@ -52,10 +62,13 @@ export const AllHeroes = ({allData, LikeHeroe, inputValue}) => {
         } 
     }
 
-    let columns;
+    window.addEventListener("resize", listenViewport);
 
+    // Number of columns according to position
+    let columns = 4;
+        
     if(sizesPosition === 1){
-        columns = 4;
+         columns = 4;
     }else if(sizesPosition === 2){
         columns = 3;
     }else if(sizesPosition === 3){
@@ -64,10 +77,9 @@ export const AllHeroes = ({allData, LikeHeroe, inputValue}) => {
         columns = 1;
     }
 
-    window.addEventListener("resize", listenViewport);
-
     useEffect(() => {
 
+        // Initial Position
         if(window.innerWidth >= 1280){
             setSizesPosition(1);
         }else if(window.innerWidth >= 960){
@@ -90,9 +102,11 @@ export const AllHeroes = ({allData, LikeHeroe, inputValue}) => {
             columnCount={columns}
             columnWidth={280}
             height={600}
-            rowCount={inputValue[0] ? (dataSearched.length / columns) + 1 :(allData.length / columns) + 1}
+            rowCount={
+                inputValue.length > 0 ? Math.floor((dataSearched.length / columns)+1) : Math.floor((allData.length / columns)+1)
+            }
             rowHeight={200}
-            width={ columns * 280}
+            width={columns * 280}
         >
             {Cell}
         </Grid>
