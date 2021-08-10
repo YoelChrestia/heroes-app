@@ -17,7 +17,7 @@
     border: 1px solid rgba(106, 77, 188, 0.44);
 }
  
-@keyframes scale {
+/* @keyframes scale {
     from {
       transform: scale(0.5);
     }
@@ -25,7 +25,7 @@
     to {
         transform: scale(1);
     }
-}
+} */
 
 .card-background{
     position: absolute;
